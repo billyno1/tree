@@ -33,7 +33,7 @@ void insertTree(Node * node, int value) {
         if(count == 10) break;
     }
 }
-void printTreePreOrder(Node *root) {
+void printTree(Node *root) {
     cout << root->value << endl;
     cout << root->left->value << ", ";
     cout << root->right->value << endl;
@@ -59,6 +59,6 @@ int main()
     insertTree(root, 5);
     insertTree(root, 6);
     insertTree(root, 7);
-    printTreePreOrder(root);
+    printTree(root);
     return 0;
 }
