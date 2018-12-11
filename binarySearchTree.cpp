@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -11,9 +10,9 @@ struct Node {
 };
 
 void insert(Node * node, int value) {
-    if(!node->left && node->value > value)) {
+    if(!node->left && node->value > value) {
         node->left = new Node(value);   
-    } else if (!node->right && node->value < value)) {
+    } else if (!node->right && node->value < value) {
         node->right = new Node(value);   
     } else if (node->value < value) {
         insert(node->right, value);   
@@ -23,21 +22,45 @@ void insert(Node * node, int value) {
         // value == node->value, just return   
     }
 }
+void printTree(Node *root) {
+    cout << root->value << endl;
+    cout << root->left->value << ", ";
+    cout << root->right->value << endl;
+    
+    cout << root->left->left->value << " ";
+    cout << root->left->right->value << ", ";
+    cout << root->right->left->value << " ";
+    cout << root->right->right->value << endl;
+    
+    cout << root->left->left->left->value << " ";
+}
+void deleteTree(Node * node) {
+    if(!node) return;
+    deleteTree(node->left);
+    node->left = nullptr;
+    deleteTree(node->right);
+    node->right = nullptr;
+    if(!node->left && !node->right) {
+        delete node;
+    }
+}   
 int main()
 {
     
-    Node *root = new Node(0);
-    //insertTreeBinary_I(root, 0);
-    insertTree(root, 1);
-    insertTree(root, 2);
-    insertTree(root, 3);
-    insertTree(root, 4);
-    insertTree(root, 5);
-    insertTree(root, 6);
-    insertTree(root, 7);
+    Node *root = new Node(4);
+    insert(root, 2);
+    insert(root, 6);
+    insert(root, 3);
+    insert(root, 1);
+    insert(root, 5);
+    insert(root, 0);
+    insert(root, 7);
     //printTreePreOrder(root);
+    deleteTree(root);
+    root = nullptr;
     //printTree(root);
+    if(root==nullptr) cout << "EMPTY"<<endl;
     //printTreeInOrder(root);
-    printTreePostOrder(root);
+    //printTreePostOrder(root);
     return 0;
 }
