@@ -51,7 +51,18 @@ void printTreePreOrder(Node *root) {
     printTreePreOrder(root->left);
     printTreePreOrder(root->right);
 }
-
+void printTreeInOrder(Node *root) {
+    if (!root) return;
+    printTreeInOrder(root->left);
+    cout << root->value << endl;
+    printTreeInOrder(root->right);
+}
+void printTreePostOrder(Node *root) {
+    if (!root) return;
+    printTreePostOrder(root->left);
+    printTreePostOrder(root->right);
+    cout << root->value << endl;
+}
 int main()
 {
     
