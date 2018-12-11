@@ -44,9 +44,14 @@ void printTree(Node *root) {
     cout << root->right->right->value << endl;
     
     cout << root->left->left->left->value << " ";
-    
-    
 }
+void printTreePreOrder(Node *root) {
+    if (!root) return;
+    cout << root->value << endl;
+    printTreePreOrder(root->left);
+    printTreePreOrder(root->right);
+}
+
 int main()
 {
     
